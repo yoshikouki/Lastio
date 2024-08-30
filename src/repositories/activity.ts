@@ -5,7 +5,6 @@ const getLatestLog = (activityId: string) => {
   const latestLog = logs.sort(
     (a, b) => new Date(b.loggedAt).getTime() - new Date(a.loggedAt).getTime(),
   )[0];
-  console.log("activitiesLogsData:", activitiesLogsData);
   return latestLog;
 };
 
