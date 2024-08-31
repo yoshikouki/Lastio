@@ -1,12 +1,12 @@
+import { AnimatedLink } from "@/components/animated-link";
 import { url } from "@/lib/url";
-import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
 
 export const Header = () => {
   return (
     <header className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-xl items-center justify-between p-4">
-        <Link
+        <AnimatedLink
           href={url.root}
           className="flex items-center justify-center gap-2"
         >
@@ -17,7 +17,7 @@ export const Header = () => {
             width={32}
           />
           <h1 className="font-black text-6xl">Lasty</h1>
-        </Link>
+        </AnimatedLink>
         <ThemeToggle />
       </div>
     </header>

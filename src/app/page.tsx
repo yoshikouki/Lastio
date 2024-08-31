@@ -1,5 +1,6 @@
+import { AnimatedLink } from "@/components/animated-link";
+import { url } from "@/lib/url";
 import { getActivitiesByGroup } from "@/repositories/activity";
-import Link from "next/link";
 
 export default async function HomePage() {
   const activities = await getActivitiesByGroup("group-1");
@@ -9,12 +10,12 @@ export default async function HomePage() {
       <div className="flex flex-col gap-5">
         {activities.map((activity) => (
           <div key={activity.id} className="flex flex-col gap-1 px-4">
-            <Link
-              href={`/activities/${activity.id}`}
+            <AnimatedLink
+              href={url.activity(activity.id)}
               className="font-bold text-lg"
             >
               {activity.name}
-            </Link>
+            </AnimatedLink>
             <div className="text-gray-500 text-sm">
               {activity.latestLog.loggedAt} days ago
             </div>
