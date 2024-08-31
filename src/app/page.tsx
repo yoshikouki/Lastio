@@ -13,6 +13,9 @@ export default async function HomePage() {
             <AnimatedLink
               href={url.activity(activity.id)}
               className="font-bold text-lg"
+              style={{
+                viewTransitionName: `activity-${activity.id}`,
+              }}
             >
               {activity.name}
             </AnimatedLink>

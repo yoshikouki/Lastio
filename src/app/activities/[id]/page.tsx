@@ -8,7 +8,14 @@ export default async function ActivitiesPage({
   return (
     <main className="flex flex-col items-center justify-center gap-10 py-10">
       <div className="flex flex-col gap-5">
-        <h1 className="font-bold text-2xl">{activity.name}</h1>
+        <h1
+          className="font-bold text-2xl"
+          style={{
+            viewTransitionName: `activity-${activity.id}`,
+          }}
+        >
+          {activity.name}
+        </h1>
         <div className="text-gray-500">
           {activity.latestLog.loggedAt} days ago
         </div>
