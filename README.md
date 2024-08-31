@@ -1,4 +1,4 @@
-# Lasty
+# Lastio
 
 Record the date of the last run and display the number of days elapsed since then.
 

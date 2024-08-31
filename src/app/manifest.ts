@@ -3,8 +3,8 @@ import { description } from "./metadata";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Lasty",
-    short_name: "Lasty",
+    name: "Lastio",
+    short_name: "Lastio",
     description,
     start_url: "/",
     display: "standalone",

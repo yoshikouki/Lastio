@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 
-export const title = "Lasty - Awesome App";
-export const description = "Lasty is an awesome app!";
+export const title = "Lastio - Awesome App";
+export const description = "Lastio is an awesome app!";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://Lasty.vercel.app/"),
+  metadataBase: new URL("https://Lastio.vercel.app/"),
   title,
   description,
   keywords: [],

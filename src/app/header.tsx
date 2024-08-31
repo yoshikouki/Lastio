@@ -16,7 +16,7 @@ export const Header = () => {
             alt="service logo"
             width={32}
           />
-          <h1 className="font-black text-6xl">Lasty</h1>
+          <h1 className="font-black text-6xl">Lastio</h1>
         </AnimatedLink>
         <ThemeToggle />
       </div>

@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className="mt-20 flex w-full flex-col items-center justify-center gap-4 p-4">
       <div className="flex items-center gap-4 p-4">
-        <Link href="https://github.com/yoshikouki/Lasty">
+        <Link href="https://github.com/yoshikouki/Lastio">
           <GitHubIcon className="size-6" />
         </Link>
         <Link href="https://x.com/yoshikouki_">
