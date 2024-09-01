@@ -28,7 +28,7 @@ export default async function HomePage() {
                   <div>{activity.latestLog.note}</div>
                 </div>
               </div>
-              <DoneButton />
+              <DoneButton className="h-10 w-10" />
             </div>
           </div>
         ))}
