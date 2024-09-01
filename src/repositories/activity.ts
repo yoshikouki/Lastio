@@ -1,7 +1,18 @@
-const getLatestLog = (activityId: string) => {
-  const logs = activitiesLogsData.filter(
-    (log) => log.activityId === activityId,
-  );
+type Activity = {
+  id: string;
+  name: string;
+  createdAt: Date;
+  logs: ActivityLog[];
+};
+
+type ActivityLog = {
+  id: string;
+  activityId: string;
+  note: string;
+  loggedAt: Date;
+};
+
+const getLatestLog = (logs: ActivityLog[]) => {
   const latestLog = logs.sort(
     (a, b) => b.loggedAt.getTime() - a.loggedAt.getTime(),
   )[0];
@@ -9,35 +20,39 @@ const getLatestLog = (activityId: string) => {
 };
 
 export const getActivitiesByGroup = async (groupId: string) => {
-  const activities = activitiesData.map((activity) => {
-    const logs = activitiesLogsData.filter(
-      (log) => log.activityId === activity.id,
-    );
+  const activities = getActivities().map((activity) => {
     return {
       ...activity,
       groupId,
-      totalLogs: logs.length,
-      latestLog: getLatestLog(activity.id),
-      logs,
+      totalLogs: activity.logs.length,
+      latestLog: getLatestLog(activity.logs),
     };
   });
   return activities;
 };
 
 export const getActivityById = async (id: string) => {
-  const activity = activitiesData.find((activity) => activity.id === id);
+  const activity = getActivities().find((activity) => activity.id === id);
   if (!activity) {
     throw new Error("Activity not found");
   }
-  const logs = activitiesLogsData.filter(
-    (log) => log.activityId === activity.id,
-  );
   return {
     ...activity,
-    logs,
-    latestLog: getLatestLog(activity.id),
+    latestLog: getLatestLog(activity.logs),
   };
 };
+
+export const getActivities = () => {
+  if (activities.length === 0) {
+    activities = activitiesData.map((activity) => ({
+      ...activity,
+      logs: activitiesLogsData.filter((log) => log.activityId === activity.id),
+    }));
+  }
+  return activities;
+};
+
+let activities: Activity[] = [];
 
 const activitiesData = [
   {
