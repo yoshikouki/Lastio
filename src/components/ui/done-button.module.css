@@ -1,0 +1,45 @@
+.label:has(input:checked) {
+  transition-property: all;
+  animation: checked-button 0.3s ease-in-out;
+}
+
+@keyframes checked-button {
+  0% {
+    transform: scale(1);
+    border-radius: calc(var(--radius) - 4px);
+  }
+  30% {
+    transform: scale(0.8);
+    border-radius: 50%;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.label:has(input:checked) .radial {
+  transition-property: all;
+  animation: radial-animation 1s ease-in-out;
+}
+
+@keyframes radial-animation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+    stroke-width: 1px;
+  }
+  30% {
+    transform: scale(2);
+    opacity: 1;
+    stroke-width: 4px;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 1;
+    stroke-width: 0px;
+    stroke: #fff;
+  }
+}
