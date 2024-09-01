@@ -1,4 +1,5 @@
 import { AnimatedLink } from "@/components/animated-link";
+import { formatRelativeDate } from "@/lib/format";
 import { url } from "@/lib/url";
 import { getActivitiesByGroup } from "@/repositories/activity";
 
@@ -20,7 +21,7 @@ export default async function HomePage() {
               {activity.name}
             </AnimatedLink>
             <div className="text-gray-500 text-sm">
-              {activity.latestLog.loggedAt} days ago
+              {formatRelativeDate(activity.latestLog.loggedAt)}
             </div>
           </div>
         ))}

@@ -1,3 +1,4 @@
+import { formatLongDate, formatRelativeDate } from "@/lib/format";
 import { getActivityById } from "@/repositories/activity";
 
 export default async function ActivitiesPage({
@@ -17,12 +18,14 @@ export default async function ActivitiesPage({
           {activity.name}
         </h1>
         <div className="text-gray-500">
-          {activity.latestLog.loggedAt} days ago
+          {formatRelativeDate(activity.latestLog.loggedAt)}
         </div>
         <div className="flex flex-col gap-1">
           {activity.logs.map((log) => (
             <div key={log.id} className="flex flex-col gap-1">
-              <div className="text-gray-500">{log.loggedAt}</div>
+              <div className="text-gray-500">
+                {formatLongDate(log.loggedAt)}
+              </div>
               <div className="text-gray-500">{log.note}</div>
             </div>
           ))}
