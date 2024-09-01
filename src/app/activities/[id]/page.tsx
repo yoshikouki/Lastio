@@ -1,11 +1,13 @@
 import { DoneButton } from "@/components/ui/done-button";
 import { formatLongDate, formatRelativeDate } from "@/lib/format";
 import { getActivityById } from "@/repositories/activity";
+import { addLog } from "@/server/actions/activity-log";
 
 export default async function ActivitiesPage({
   params,
 }: { params: { id: string } }) {
   const activity = await getActivityById(params.id);
+  const onClickDone = addLog(activity);
 
   return (
     <main className="flex flex-col items-center justify-center gap-10 py-10">
@@ -24,7 +26,7 @@ export default async function ActivitiesPage({
             {formatRelativeDate(activity.latestLog.loggedAt)}
           </div>
         </div>
-        <DoneButton />
+        <DoneButton onClick={onClickDone} />
       </div>
 
       {/* Activity Logs */}

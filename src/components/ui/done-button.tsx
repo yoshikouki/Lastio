@@ -5,7 +5,13 @@ import { CheckIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import styles from "./done-button.module.css";
 
-export const DoneButton = ({ className }: { className?: string }) => {
+export const DoneButton = ({
+  className,
+  onClick,
+}: {
+  className?: string;
+  onClick?: (checked: boolean) => void;
+}) => {
   return (
     <label
       className={cn(
@@ -15,7 +21,13 @@ export const DoneButton = ({ className }: { className?: string }) => {
         className,
       )}
     >
-      <input type="checkbox" className="hidden" />
+      <input
+        type="checkbox"
+        className="hidden"
+        onChange={(e) => {
+          onClick?.(e.target.checked);
+        }}
+      />
       <CheckIcon
         className={cn(
           "h-4 w-4 stroke-lime-400",

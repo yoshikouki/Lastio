@@ -1,3 +1,8 @@
+export type ActivityWithLogs = Activity & {
+  totalLogs: number;
+  latestLog: ActivityLog;
+};
+
 type Activity = {
   id: string;
   name: string;
@@ -12,7 +17,7 @@ type ActivityLog = {
   loggedAt: Date;
 };
 
-const getLatestLog = (logs: ActivityLog[]) => {
+const findLatestLog = (logs: ActivityLog[]) => {
   const latestLog = logs.sort(
     (a, b) => b.loggedAt.getTime() - a.loggedAt.getTime(),
   )[0];
@@ -24,8 +29,6 @@ export const getActivitiesByGroup = async (groupId: string) => {
     return {
       ...activity,
       groupId,
-      totalLogs: activity.logs.length,
-      latestLog: getLatestLog(activity.logs),
     };
   });
   return activities;
@@ -38,21 +41,47 @@ export const getActivityById = async (id: string) => {
   }
   return {
     ...activity,
-    latestLog: getLatestLog(activity.logs),
+    latestLog: findLatestLog(activity.logs),
   };
 };
 
-export const getActivities = () => {
-  if (activities.length === 0) {
-    activities = activitiesData.map((activity) => ({
+export const addActivityLog = async (activityId: string, note = "") => {
+  const activity = await getActivityById(activityId);
+  const newLog = {
+    id: crypto.randomUUID(),
+    activityId,
+    note,
+    loggedAt: new Date(),
+  };
+  const updatedActivity = {
+    ...activity,
+    logs: [newLog, ...activity.logs],
+  };
+  activities = activities.map((activity) =>
+    activity.id === activityId ? updatedActivity : activity,
+  );
+  activitiesLogs = [newLog, ...activitiesLogs];
+  return updatedActivity;
+};
+
+const getActivities = (): ActivityWithLogs[] => {
+  console.log("debug: activitiesLogs", activitiesLogs?.[0]);
+  if (activities) return activities;
+  activitiesLogs = activitiesLogsData;
+  activities = activitiesData.map((activity) => {
+    const logs = activitiesLogs.filter((log) => log.activityId === activity.id);
+    return {
       ...activity,
-      logs: activitiesLogsData.filter((log) => log.activityId === activity.id),
-    }));
-  }
+      logs,
+      totalLogs: logs.length,
+      latestLog: findLatestLog(logs),
+    };
+  });
   return activities;
 };
 
-let activities: Activity[] = [];
+let activities: ActivityWithLogs[];
+let activitiesLogs: ActivityLog[];
 
 const activitiesData = [
   {
