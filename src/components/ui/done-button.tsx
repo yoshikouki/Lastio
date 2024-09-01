@@ -5,6 +5,33 @@ import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+const animateButton = (label: HTMLLabelElement) => {
+  const buttonAnimation = label.animate(
+    [
+      { transform: "scale(1)" },
+      { transform: "scale(0.8)", offset: 0.3 },
+      { transform: "scale(1.1)", offset: 0.6 },
+      { transform: "scale(1)" },
+    ],
+    { duration: 300, easing: "ease-in-out", fill: "none" },
+  );
+  buttonAnimation.pause();
+  return buttonAnimation;
+};
+
+const animateIcon = (svg: SVGSVGElement) => {
+  const iconAnimation = svg.animate(
+    [
+      { transform: "scale(1)" },
+      { transform: "scale(1.5)", offset: 0.3 },
+      { transform: "scale(1)" },
+    ],
+    { duration: 300, easing: "ease-in-out", fill: "none" },
+  );
+  iconAnimation.pause();
+  return iconAnimation;
+};
+
 const animateRadical = (svg: SVGSVGElement) => {
   const radialAnimation = svg.animate(
     [
@@ -20,10 +47,14 @@ const animateRadical = (svg: SVGSVGElement) => {
 
 export const DoneButton = ({ className }: { className?: string }) => {
   const checkboxRef = useRef<HTMLInputElement>(null);
+  const buttonAnimationRef = useRef<Animation | null>(null);
+  const iconAnimationRef = useRef<Animation | null>(null);
   const radialAnimationRef = useRef<Animation | null>(null);
 
   const animate = () => {
     if (!checkboxRef.current?.checked) return;
+    buttonAnimationRef.current?.play();
+    iconAnimationRef.current?.play();
     radialAnimationRef.current?.play();
   };
 
@@ -39,6 +70,11 @@ export const DoneButton = ({ className }: { className?: string }) => {
         "has-[:checked]:rounded-[50%] has-[:checked]:bg-lime-600",
         className,
       )}
+      ref={(label: HTMLLabelElement) => {
+        if (!label) return () => {};
+        buttonAnimationRef.current = animateButton(label);
+        return () => buttonAnimationRef.current?.cancel();
+      }}
     >
       <input
         type="checkbox"
@@ -51,6 +87,11 @@ export const DoneButton = ({ className }: { className?: string }) => {
           "h-4 w-4",
           "stroke-lime-400 group-has-[:checked]:stroke-[4px] group-has-[:checked]:stroke-white",
         )}
+        ref={(svg: SVGSVGElement) => {
+          if (!svg) return () => {};
+          iconAnimationRef.current = animateIcon(svg);
+          return () => iconAnimationRef.current?.cancel();
+        }}
       />
       <svg
         className={cn(
