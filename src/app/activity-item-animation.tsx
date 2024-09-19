@@ -12,24 +12,24 @@ export const ActivityItemAnimation = ({
       initial={{
         margin: "0",
 
-        paddingTop: "0.5rem",
-        paddingBottom: "0.5rem",
-        paddingLeft: "2rem",
-        paddingRight: "2rem",
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
 
-        backgroundColor: "#222",
         border: "1px solid transparent",
       }}
       whileInView={{
-        marginTop: "1rem",
-        marginLeft: "1rem",
-        marginRight: "1rem",
+        marginBottom: "1.25rem",
+        marginLeft: "0.5rem",
+        marginRight: "0.5rem",
 
         paddingLeft: "1rem",
         paddingRight: "1rem",
 
+        backgroundColor: "#111111",
         borderRadius: "0.5rem",
-        border: "1px solid #333",
+        border: "0.5px solid #112121",
       }}
       transition={{
         duration: 0.3,
