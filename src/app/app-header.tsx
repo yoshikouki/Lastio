@@ -1,24 +1,17 @@
 import { AnimatedLink } from "@/components/animated-link";
+import { NavIconButton } from "@/components/ui/nav-icon-button";
 import { url } from "@/lib/url";
-import { ThemeToggle } from "./theme-toggle";
+import { LogoIcon } from "./logo";
 
 export const AppHeader = () => {
   return (
-    <header className="flex w-full flex-col items-center justify-center">
-      <div className="flex w-full max-w-xl items-center justify-between p-4">
-        <AnimatedLink
-          href={url.root}
-          className="flex items-center justify-center gap-2"
-        >
-          <img
-            src={"/logo-no-padding.webp"}
-            loading="eager"
-            alt="service logo"
-            width={32}
-          />
-          <h1 className="font-black text-6xl">Lastio</h1>
+    <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between">
+      <div className="flex w-full max-w-xl items-center justify-between p-2">
+        <AnimatedLink href={url.root}>
+          <NavIconButton>
+            <LogoIcon className="size-6 stroke-foreground" />
+          </NavIconButton>
         </AnimatedLink>
-        <ThemeToggle />
       </div>
     </header>
   );

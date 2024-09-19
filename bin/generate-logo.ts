@@ -1,7 +1,7 @@
 // biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 import { parseArgs } from "util";
-import { renderLogoSVG } from "./logo";
 import sharp from "sharp";
+import { renderLogoSVG } from "./logo";
 
 const DEFAULT_CONFIG = {
   DEFAULT_INPUT: "./public/logo.webp",
