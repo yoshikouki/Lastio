@@ -4,6 +4,7 @@ import { DoneButton } from "../components/ui/done-button";
 import { formatRelativeDate } from "../lib/format";
 import { url } from "../lib/url";
 import type { ActivityWithLogs } from "../repositories/activity";
+import { ActivityItemAnimation } from "./activity-item-animation";
 
 export const ActivityItem = ({
   activity,
@@ -13,7 +14,7 @@ export const ActivityItem = ({
   const onClickDone = addLog.bind(null, activity);
 
   return (
-    <div key={activity.id} className="h-full w-full px-4">
+    <ActivityItemAnimation key={activity.id}>
       <div className="flex justify-between">
         <div className="flex flex-col gap-1">
           <AnimatedLink
@@ -32,6 +33,6 @@ export const ActivityItem = ({
         </div>
         <DoneButton className="h-10 w-10" onClick={onClickDone} />
       </div>
-    </div>
+    </ActivityItemAnimation>
   );
 };

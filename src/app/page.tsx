@@ -6,7 +6,7 @@ export default async function HomePage() {
 
   return (
     <main className="flex flex-col items-center justify-center gap-10 py-10">
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col">
         {activities.map((activity) => (
           <ActivityItem key={activity.id} activity={activity} />
         ))}
