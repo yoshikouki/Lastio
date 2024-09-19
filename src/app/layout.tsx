@@ -4,7 +4,6 @@ import { M_PLUS_2 } from "next/font/google";
 
 import { ViewTransitionProvider } from "../components/animated-link/view-transition-provider";
 import { Footer } from "./footer";
-import { Header } from "./header";
 import { ThemeProvider } from "./theme-provider";
 
 export { metadata, viewport } from "./metadata";
@@ -26,7 +25,6 @@ export default function RootLayout({
       >
         <body className={font.className}>
           <ThemeProvider>
-            <Header />
             {children}
             <Footer />
           </ThemeProvider>

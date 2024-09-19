@@ -2,7 +2,7 @@ import { AnimatedLink } from "@/components/animated-link";
 import { url } from "@/lib/url";
 import { ThemeToggle } from "./theme-toggle";
 
-export const Header = () => {
+export const AppHeader = () => {
   return (
     <header className="flex w-full flex-col items-center justify-center">
       <div className="flex w-full max-w-xl items-center justify-between p-4">
