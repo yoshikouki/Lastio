@@ -1,3 +1,5 @@
+"use server";
+
 import { url } from "@/lib/url";
 import { type ActivityWithLogs, addActivityLog } from "@/repositories/activity";
 import { revalidatePath } from "next/cache";

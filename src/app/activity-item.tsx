@@ -10,7 +10,7 @@ export const ActivityItem = ({
 }: {
   activity: ActivityWithLogs;
 }) => {
-  const onClickDone = addLog(activity);
+  const onClickDone = addLog.bind(null, activity);
 
   return (
     <div key={activity.id} className="h-full w-full px-4">
