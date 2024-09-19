@@ -1,4 +1,4 @@
-import { AppHeader } from "@/app/app-header";
+import { AppNav } from "@/app/app-nav";
 import { DoneButton } from "@/components/ui/done-button";
 import { formatLongDate, formatRelativeDate } from "@/lib/format";
 import { getActivityById } from "@/repositories/activity";
@@ -12,7 +12,7 @@ export default async function ActivitiesPage({
 
   return (
     <>
-      <AppHeader />
+      <AppNav />
       <main className="flex flex-col items-center justify-center gap-10 py-10">
         {/* Activity Header */}
         <div className="flex w-full min-w-xs items-center justify-between px-4">
