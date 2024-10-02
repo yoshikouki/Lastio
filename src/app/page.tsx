@@ -11,7 +11,7 @@ export default async function HomePage() {
       <AppHeader />
       <AppNav />
       <main className="flex flex-col items-center justify-center gap-10 py-20">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           {activities.map((activity) => (
             <ActivityItem key={activity.id} activity={activity} />
           ))}

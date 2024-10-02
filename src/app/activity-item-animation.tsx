@@ -20,16 +20,15 @@ export const ActivityItemAnimation = ({
         border: "1px solid transparent",
       }}
       whileInView={{
-        marginBottom: "1.25rem",
         marginLeft: "0.5rem",
         marginRight: "0.5rem",
 
         paddingLeft: "1rem",
         paddingRight: "1rem",
 
-        backgroundColor: "#111111",
+        backgroundColor: "var(--card)",
         borderRadius: "0.5rem",
-        border: "0.5px solid #112121",
+        border: "0.5px solid hsl(var(--border))",
       }}
       transition={{
         duration: 0.3,
