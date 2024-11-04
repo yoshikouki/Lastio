@@ -5,6 +5,10 @@
   "scripts": {
     "dev": "bun --bun x next dev --turbopack",
     "build": "bun --bun x next build",
+    "dev:worker": "wrangler dev --port 8771",
+    "build:worker": "cloudflare",
+    "preview:worker": "bun run build:worker && bun run dev:worker",
+    "deploy:worker": "bun run build:worker && wrangler deploy",
     "start": "bun --bun x next start",
     "lint": "bunx @biomejs/biome check .",
     "format": "bunx @biomejs/biome check --write .",
@@ -12,6 +16,7 @@
     "update:all": "bun update --latest"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^0.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "babel-plugin-react-compiler": "^0.0.0-experimental-b4db8c3-20241001",
     "class-variance-authority": "^0.7.0",
@@ -40,7 +45,8 @@
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "wrangler": "^3.84.1"
   },
   "resolutions": {
     "@types/react": "npm:types-react@19.0.0-rc.1",
