@@ -6,8 +6,9 @@ import { addLog } from "@/server/actions/activity-log";
 
 export default async function ActivitiesPage({
   params,
-}: { params: { id: string } }) {
-  const activity = await getActivityById(params.id);
+}: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const activity = await getActivityById(id);
   const onClickDone = async (checked: boolean) => {
     "use server";
     if (!checked) return;
