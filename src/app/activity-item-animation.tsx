@@ -30,6 +30,12 @@ export const ActivityItemAnimation = ({
         borderRadius: "0.5rem",
         border: "0.5px solid hsl(var(--border))",
       }}
+      whileHover={{
+        scale: 1.03,
+        transition: {
+          duration: 0.1,
+        },
+      }}
       transition={{
         duration: 0.3,
       }}
