@@ -8,7 +8,11 @@ export default async function ActivitiesPage({
   params,
 }: { params: { id: string } }) {
   const activity = await getActivityById(params.id);
-  const onClickDone = addLog(activity);
+  const onClickDone = async (checked: boolean) => {
+    "use server";
+    if (!checked) return;
+    await addLog(activity);
+  };
 
   return (
     <>
